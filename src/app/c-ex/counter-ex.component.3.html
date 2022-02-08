@@ -1,0 +1,74 @@
+<div class="jumbotron p-0 m-4">
+  <div class="container-fluid">
+    <h1 class="display-4 text-center mb-4">
+      Counter Exercise
+    </h1>
+    <div class="row align-items-end">
+      <div class="col-md-2 text-center">
+        <h1 class="display-3">{{counter}}</h1>
+      </div>
+      <div class="col-md-4">
+        <div class="input-group mb-3">
+          <select class="custom-select" id="gapSelection" #gapSelection>
+            <option *ngFor="let gap of gaps" [value]="gap" [selected]="selectedGap === gap">{{gap}}</option>
+          </select>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" (click)="setGap(gapSelection.value)">Choose Gap</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="input-group mb-3 d-flex justify-content-between">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" [checked]="sign === '+'" (change)="onSignChange('+')" name="counterSign" id="signPlus" value="+">
+            <label class="form-check-label" for="signPlus">+</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" [checked]="sign === '-'" name="counterSign" (change)="onSignChange('-')" id="signMinus" value="-">
+            <label class="form-check-label" for="signMinus">-</label>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="input-group mb-3">
+          <input type="number" class="form-control" aria-label="milliseconds" aria-describedby="milliseconds"
+                  [value]="milliseconds" #millisecondsSelection>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" (click)="setMilliseconds(millisecondsSelection.value)">Set Milliseconds</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-6">
+        <button class="btn btn-success btn-block" (click)="onStart()">{{ isRunning ? 'Stop' : 'Start' | uppercase }}</button>
+      </div>
+      <div class="col-md-6">
+        <button class="btn btn-warning btn-block" (click)="onClear()">Clear</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="jumbotron p-0 m-4">
+  <div class="container-fluid pre-scrollable">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Gap</th>
+          <th scope="col">Sign</th>
+          <th scope="col">Millis</th>
+          <th scope="col">Counter</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of countHistory">
+          <th scope="row">{{item.gap}}</th>
+          <td>{{item.sign}}</td>
+          <td>{{item.millis}}</td>
+          <td>{{item.counter}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

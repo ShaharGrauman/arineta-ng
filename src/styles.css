@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("http://fonts.googleapis.com/css?family=Montserrat:400,700");
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+* {
+  font-family: Montserrat;
+}
+
+
+
+.active-light {
+  background-color: #7397bc;
+}

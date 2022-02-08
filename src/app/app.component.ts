@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Student } from './models/student';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'arineta-demo';
+  title = 'Arineta';
+  subTitle:string = 'Angular Course'
+
+  selectedStudent:Student | undefined;
+
+  onSelectedStudent(student: any) {
+    this.selectedStudent = student;
+  }
 }

@@ -1,0 +1,17 @@
+<ul class="list-group">
+  <li class="list-group-item active d-flex justify-content-between" aria-current="true">
+    Students
+    <button class="btn btn-secondary" (click)="sort()">
+      Sort <i [ngClass]="{
+        'bi-caret-up': sortIsAsc === 1,
+        'bi-caret-down': sortIsAsc === -1
+      }"></i>
+    </button>
+  </li>
+  <li class="list-group-item"
+      *ngFor="let student of students"
+      [class.active-light]="student.id === selected.id"
+      (click)="selectStudent(student)">
+      {{student.name}}, {{ student.avg }}
+  </li>
+</ul>
